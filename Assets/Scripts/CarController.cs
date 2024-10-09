@@ -28,6 +28,8 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    
+
     private void FixedUpdate()
     {
         GetInput();
@@ -42,6 +44,13 @@ public class CarController : MonoBehaviour
         horizontalInput = Input.GetAxis(HORIZONTAL);
         verticalInput = Input.GetAxis(VERTICAL);
         isBreaking = Input.GetKey(KeyCode.Space);
+
+
+        float minPitch = 0.8f;
+        float maxPitch = 2.0f;
+        float pitchMultiplier = 1;// 0.1f;
+        float speed = new Vector2(horizontalInput,verticalInput).magnitude; // 获取赛车速度
+        GetComponent<AudioSource>().pitch = Mathf.Lerp(minPitch, maxPitch, speed * pitchMultiplier); // 根据速度调整音调
     }
 
     private void HandleMotor()
