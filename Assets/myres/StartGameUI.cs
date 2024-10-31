@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StartGameUI : MonoBehaviour
 {
-    public Button startBtn;
+    public Button[] startBtns;
     public Text timelb;
     // Start is called before the first frame update
     void Start()
@@ -21,11 +21,16 @@ public class StartGameUI : MonoBehaviour
         {
             timelb.text = "最好成绩 无";
         }
-
-        startBtn.onClick.AddListener(() => { 
-            gameObject.SetActive(false);
-            GameMgr.Instance.StartGame();
-        });
+        for (var i=0;i<startBtns.Length;i++)
+        {
+            var j = i;
+            var startBtn = startBtns[i];
+            startBtn.onClick.AddListener(() => { 
+                gameObject.SetActive(false);
+                GameMgr.Instance.MainUI();// .StartGame(j);
+            });
+        }
+       
     }
 
     // Update is called once per frame

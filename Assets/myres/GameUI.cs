@@ -7,6 +7,7 @@ public class GameUI : MonoBehaviour
 {
     public Text timeLb;
     public Text distanceLb;
+    public Text scoreLb;
 
     private void Start()
     {
@@ -30,5 +31,6 @@ public class GameUI : MonoBehaviour
         timeLb.text ="用时 "+ minutes + ":" + seconds;
 
         distanceLb.text = "距离终点 " + (int)((GameMgr.Instance.endPos.position - GameMgr.Instance.car.transform.position).magnitude) + "米";
+        scoreLb.text = "积分:" + (int)GameMgr.Instance.score;
     }
 }

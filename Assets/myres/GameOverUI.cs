@@ -12,7 +12,7 @@ public class GameOverUI : MonoBehaviour
     {
         btn.onClick.AddListener(() => {
             gameObject.SetActive(false);
-            GameMgr.Instance.StartGame();
+            GameMgr.Instance.MainUI();
         });
     }
 
